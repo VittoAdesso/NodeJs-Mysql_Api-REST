@@ -1,3 +1,6 @@
+# I'm going to build an Api-Rest with NodeJs & Mysql, but i am going to use querys to the endpoint not ORM.
+
+🚧🚧🚧🏗️🏗️🏗️🚧🚧🚧
 install
 
 `` npm install --save mysql `` 
