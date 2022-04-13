@@ -31,6 +31,7 @@ router.route("/registration/:id").get((req, res, next) => {
         })
 })
 
+// create one registry of competition
 router.post("/registration/createOne", (req, res, next) => {
     const inputData = {
         swimmerId: req.body.swimmerId,
@@ -40,6 +41,34 @@ router.post("/registration/createOne", (req, res, next) => {
         // updatedAt: req.body.updatedAt
     }
     connectDb.query("INSERT INTO registrations SET ?", [inputData], (error, result) => {
+        if (error) {
+            res.status(500).send({msg: "We can't register"})
+            return next(error)
+        } else {
+            res.status(200).send({msg: "Registry is complete"})
+        }
+    })
+})
+
+
+// create MANY registry of competition
+router.post("/registration/createMany", (req, res, next) => {
+
+    const manyInscriptions = [
+        [
+            "silb",
+            "croll50",
+            0 
+        ]
+        ,
+        [
+            "fire",
+            "croll50",
+            0 
+        ]
+    ];
+    
+    connectDb.query("INSERT INTO registrations(swimmerId,competitionId,whatPosition) VALUES ?", [manyInscriptions], (error, result) => {
         if (error) {
             res.status(500).send({msg: "We can't register"})
             return next(error)
