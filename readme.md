@@ -16,3 +16,12 @@ to run app with nodemoon
 
 ``npm run dev ``
 
+
+wE HAVE TWO WAYS to play with querys
+
+One create const with query
+Two create the query into the function
+
+Also we can create the constant to call it after query. For tha y use ? ternary is a well practice
+
+

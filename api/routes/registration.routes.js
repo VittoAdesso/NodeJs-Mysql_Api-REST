@@ -15,7 +15,7 @@ router.route("/registration").get((req, res, next) => {
             res.status(200).json(response)
         }
     })
-})
+});
 
 //GET SINGLE registration BY ID with params !!!  // 
 router.route("/registration/:id").get((req, res, next) => {
@@ -29,7 +29,7 @@ router.route("/registration/:id").get((req, res, next) => {
                 res.status(200).json(response)
             }
         })
-})
+});
 
 // create one registry of competition
 router.post("/registration/createOne", (req, res, next) => {
@@ -48,26 +48,24 @@ router.post("/registration/createOne", (req, res, next) => {
             res.status(200).send({msg: "Registry is complete"})
         }
     })
-})
-
+});
 
 // create MANY registry of competition
 router.post("/registration/createMany", (req, res, next) => {
-
+// MAKE ANY OBJETS THAT I WANT TO CREATE 
     const manyInscriptions = [
         [
             "silb",
             "croll50",
             0 
-        ]
-        ,
+        ],
         [
             "fire",
             "croll50",
             0 
         ]
     ];
-    
+    // HERE IS THE MAGIC
     connectDb.query("INSERT INTO registrations(swimmerId,competitionId,whatPosition) VALUES ?", [manyInscriptions], (error, result) => {
         if (error) {
             res.status(500).send({msg: "We can't register"})
