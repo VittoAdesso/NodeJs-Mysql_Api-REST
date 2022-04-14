@@ -52,8 +52,10 @@ router.post("/registration/createOne", (req, res, next) => {
 
 // create MANY registry of competition
 router.post("/registration/createMany", (req, res, next) => {
-// MAKE ANY OBJETS THAT I WANT TO CREATE 
-    const manyInscriptions = [
+// MAKE ANY OBJETS THAT I WANT TO CREATE
+
+//have to manage only 20 insc and minimun 8
+const manyInscriptions = [
         [
             "silb",
             "croll50",
