@@ -1,6 +1,7 @@
-# I'm going to build an Api-Rest with NodeJs & Mysql, but i am going to use querys to the endpoint not ORM.
+# I'm going to build an Api-Rest with NodeJs & Mysql, but i am going to use querys to get data from endpoint not using ORM!!! .
 
 🚧🚧🚧🏗️🏗️🏗️🚧🚧🚧
+
 install
 
 `` npm install --save mysql `` 
@@ -17,7 +18,7 @@ to run app with nodemoon
 ``npm run dev ``
 
 
-wE HAVE TWO WAYS to play with querys
+# WE HAVE TWO WAYS to play with querys 🏗️
 
 One create const with query
 Two create the query into the function
