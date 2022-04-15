@@ -17,6 +17,11 @@ to run app with nodemoon
 
 ``npm run dev ``
 
+Bd is deployed on Clever cloud
+
+Installed dotenv to secure variables
+
+https://www.npmjs.com/package/dotenv
 
 # WE HAVE TWO WAYS to play with querys 🏗️
 

@@ -1,11 +1,15 @@
 const mysql = require('mysql');
+// to use .env i have to require
+const dotenv = require("dotenv")
 
-// i have to make .env more professional and secure 
+//calll it to config and use
+dotenv.config(); 
+//.env more professional and secure 
 const connectDb = mysql.createConnection({
-    host: 'blmdeqg3nwr2lglcguh6-mysql.services.clever-cloud.com',
-    user: 'utmfvpxedzfl1tn7',
-    password: 'mufputiDkzUbfhr5I4OA',
-    database: 'blmdeqg3nwr2lglcguh6'
+    host: process.env.DBHOST,
+    user: process.env.DBUSER,
+    password: process.env.DBPASSWORD,
+    database: process.env.DBDATABASE
 });
 
 // connect the DB //
