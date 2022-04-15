@@ -26,7 +26,8 @@ app.use('/api', swimmer);
 app.use('/api', competition);
 app.use('/api', registration);
 
-// MAKE LISTEN API IN PORT
-app.listen(5000, () => {
-    console.log('Server is running at port 5000');
+// config port 
+const PORT = process.env.PORT || 5000; 
+app.listen(PORT, () => {
+    console.log(`Server is listenning at port ${PORT}`);
 });
