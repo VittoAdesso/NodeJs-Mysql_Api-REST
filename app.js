@@ -26,7 +26,7 @@ app.use('/api', swimmer);
 app.use('/api', competition);
 app.use('/api', registration);
 
-// config port 
+// config port , is better this way
 const PORT = process.env.PORT || 5000; 
 app.listen(PORT, () => {
     console.log(`Server is listenning at port ${PORT}`);
