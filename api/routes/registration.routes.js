@@ -78,5 +78,20 @@ const manyInscriptions = [
     })
 })
 
+
+// added querys to celebrate new competition... simple querys ... i have to controll it now
+
+// to celebrate & create incription of 8 people
+const sqlQueryA = INSERT INTO registrations ( swimmerId, competitionId, whatPosition)  // TRY TO ADD CONT ALSO HERE 
+VALUES ? ; // ADD COMNSTANT WITH OBEJT ( ,, ), ( ,, )
+
+// want to see swimmers 1 to 5 position 
+const sqlQueryB = SELECT * FROM registrations WHERE competitionId = 'shark' ORDER BY competitionId ASC LIMIT 5; 
+
+// i have 8 people, also u have 5 places winners now i need to update table competition to celebrate 
+
+const sqlqQueryC = UPDATE competitions SET isCelebrate = 1 WHERE competitionId = 'shark';
+
+
 // i have to export, because i need to use it in other places of the project //
 module.exports = router; 
