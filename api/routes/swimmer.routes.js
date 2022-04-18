@@ -33,7 +33,7 @@ router.route("/swimmer/:id").get((req, res, next) => {
         })
 })
 
-    //GET SINGLE swimmer BY ID -- mannually  // 
+//GET SINGLE swimmer BY ID -- mannually  // 
 // router.route("/swimmer/1").get((req, res, next) => {
 //     const swimmerId = 'vitAd'; 
 //     // all the querys i have to almacenar into const
@@ -63,6 +63,18 @@ router.post("/swimmer/create", (req, res, next) => {
             return next(error)
         } else {
             res.status(200).send({msg: "Registry is complete"})
+        }
+    })
+})
+
+// to get all users and points
+router.route("/swimmer/points").get((req, res, next) => {
+    connectDb.query("SELECT * FROM swimmers ORDER BY points ASC", (error, response) => {
+        if (error) {
+            return next(error)
+        }
+        else {
+            res.status(200).json(response)
         }
     })
 })
