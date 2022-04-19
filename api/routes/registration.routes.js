@@ -2,6 +2,8 @@ const express = require("express")
 const { connectDb } = require("../database/config");
 const router = express.Router(); 
 
+//thinking to use express validator and check
+
 //GET ALL registrations // 
 router.route("/registration").get((req, res, next) => {
 // all the querys i have to almacenar into const
