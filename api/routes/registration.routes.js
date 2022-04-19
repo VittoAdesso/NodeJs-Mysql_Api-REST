@@ -55,6 +55,7 @@ router.post("/registration/createMany", (req, res, next) => {
 // MAKE ANY OBJETS THAT I WANT TO CREATE
 
 //have to manage only 20 insc and minimun 8
+// pto 5
     const manyInscriptions = [
         [
             "silb",
@@ -67,42 +68,32 @@ router.post("/registration/createMany", (req, res, next) => {
             0 
         ],
         [
-            "silb",
+            "juanV",
             "croll50",
             0 
         ],
         [
-            "fire",
+            "marCast",
             "croll50",
             0 
         ],
         [
-            "silb",
+            "vitAd",
             "croll50",
             0 
         ],
         [
-            "fire",
+            "daBal",
             "croll50",
             0 
         ],
         [
-            "silb",
+            "anBri",
             "croll50",
             0 
         ],
         [
-            "fire",
-            "croll50",
-            0 
-        ],
-        [
-            "silb",
-            "croll50",
-            0 
-        ],
-        [
-            "fire",
+            "alG",
             "croll50",
             0 
         ]
@@ -120,16 +111,13 @@ router.post("/registration/createMany", (req, res, next) => {
 
 
 // added querys to celebrate new competition... simple querys ... i have to controll it now
-
+// querys to use into dbeaver and show tables 
 // to celebrate & create incription of 8 people
 // const sqlQueryA = INSERT INTO registrations ( swimmerId, competitionId, whatPosition)  // TRY TO ADD CONT ALSO HERE 
 // VALUES ? ; // ADD COMNSTANT WITH OBEJT ( ,, ), ( ,, )
-
 // // want to see swimmers 1 to 5 position 
 // const sqlQueryB = SELECT * FROM registrations WHERE competitionId = 'shark' ORDER BY competitionId ASC LIMIT 5; 
-
 // // i have 8 people, also u have 5 places winners now i need to update table competition to celebrate 
-
 // const sqlqQueryC = UPDATE competitions SET isCelebrate = 1 WHERE competitionId = 'shark';
 
 

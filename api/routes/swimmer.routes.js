@@ -52,6 +52,7 @@ router.post("/swimmer/create", (req, res, next) => {
 })
 
 // to get all SWIMMERS + points ORDER BY ASC 
+// pto 9
 router.route("/swimmer-points").get((req, res, next) => {
     connectDb.query("SELECT name, points FROM swimmers ORDER BY points ASC", (error, response) => {
         if (error) {
