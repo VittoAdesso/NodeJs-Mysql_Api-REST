@@ -32,6 +32,7 @@ router.route("/registration/:id").get((req, res, next) => {
 });
 
 // create one registry of competition
+// pto 5
 router.post("/registration/createOne", (req, res, next) => {
     const inputData = {
         swimmerId: req.body.swimmerId,
@@ -55,7 +56,7 @@ router.post("/registration/createMany", (req, res, next) => {
 // MAKE ANY OBJETS THAT I WANT TO CREATE
 
 //have to manage only 20 insc and minimun 8
-// pto 5
+// pto 6
     const manyInscriptions = [
         [
             "silb",
@@ -107,9 +108,12 @@ router.post("/registration/createMany", (req, res, next) => {
             res.status(200).send({msg: "Registry is complete"})
         }
     })
-})
+});
+
+// PTO 7 por partes
 
 
+// TO USE INTO DBEAVER
 // added querys to celebrate new competition... simple querys ... i have to controll it now
 // querys to use into dbeaver and show tables 
 // to celebrate & create incription of 8 people
