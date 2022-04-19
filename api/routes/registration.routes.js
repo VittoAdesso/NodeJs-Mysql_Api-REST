@@ -54,9 +54,7 @@ router.post("/registration/createOne", (req, res, next) => {
 // create MANY registry of competition
 router.post("/registration/createMany", (req, res, next) => {
 // MAKE ANY OBJETS THAT I WANT TO CREATE
-
-//have to manage only 20 insc and minimun 8
-// pto 6
+//have to manage only 20 insc and minimun 8 // pto 6
     const manyInscriptions = [
         [
             "silb",
@@ -111,7 +109,35 @@ router.post("/registration/createMany", (req, res, next) => {
 });
 
 // PTO 7 por partes
+// (remember have to put check and express validator + check install )
 
+router.route("/registration").get((req, res, next) => {
+//REMEMBER TO CALL THE CONNECTION
+
+// possibility put check()
+// first query
+    if ( a ) {
+    connectDb.query("INSERT INTO registrations (swimmerId, competitioId, whatPosition) VALUES( , , ),( , , )",(err, response) => {
+        if (err) {
+            return next(err)
+        }
+        else {
+        res.status(200).json(response)
+        }
+    }
+    )};   
+    if ( b ) {
+        connectDb.query("SELECT * FROM registrations WHERE competitionId = 'shark' ORDER BY competitionId ASC LIMIT 5",(err, response) => {
+            if (err) {
+                return next(err)
+            }
+            else {
+            res.status(200).json(response)
+            }
+        }
+        )};   
+
+});
 
 // TO USE INTO DBEAVER
 // added querys to celebrate new competition... simple querys ... i have to controll it now
