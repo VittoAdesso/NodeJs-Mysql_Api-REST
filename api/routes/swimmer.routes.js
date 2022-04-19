@@ -2,8 +2,7 @@ const express = require("express")
 const { connectDb } = require("../database/config");
 const router = express.Router(); 
 
-
-//GET ALL swimmers // 
+// //GET ALL swimmers // 
 router.route("/swimmer").get((req, res, next) => {
 // all the querys i have to almacenar into const
     const sqlQuery = "SELECT * FROM swimmers"
@@ -33,22 +32,7 @@ router.route("/swimmer/:id").get((req, res, next) => {
         })
 })
 
-//GET SINGLE swimmer BY ID -- mannually  // 
-// router.route("/swimmer/1").get((req, res, next) => {
-//     const swimmerId = 'vitAd'; 
-//     // all the querys i have to almacenar into const
-//     const sqlQuery = 'SELECT * FROM swimmers WHERE swimmerId = ?'
-//         //REMEMBER TO CALL THE CONNECTION
-//         connectDb.query(sqlQuery, [swimmerId], (err, response) => {
-//             if (err) {
-//                 return next(err)
-//             }
-//             else {
-//                 res.status(200).json(response)
-//             }
-//         })
-//})
-
+//CREATE A NEW SWIMMER
 router.post("/swimmer/create", (req, res, next) => {
     const inputData = {
         swimmerId: req.body.swimmerId,
@@ -67,9 +51,9 @@ router.post("/swimmer/create", (req, res, next) => {
     })
 })
 
-// to get all users and points
-router.route("/swimmer/points").get((req, res, next) => {
-    connectDb.query("SELECT * FROM swimmers ORDER BY points ASC", (error, response) => {
+// to get all SWIMMERS + points ORDER BY ASC 
+router.route("/swimmer-points").get((req, res, next) => {
+    connectDb.query("SELECT name, points FROM swimmers ORDER BY points ASC", (error, response) => {
         if (error) {
             return next(error)
         }
@@ -77,7 +61,7 @@ router.route("/swimmer/points").get((req, res, next) => {
             res.status(200).json(response)
         }
     })
-})
+});
 
 // i have to export, because i need to use it in other places of the project //
 module.exports = router; 
