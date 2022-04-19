@@ -135,8 +135,17 @@ router.route("/registration").get((req, res, next) => {
             res.status(200).json(response)
             }
         }
-        )};   
-
+    )};   
+    if ( c ) {
+        connectDb.query("UPDATE competition SET isCelebrate = 1 WHERE competitionId = 'shak'",(err, response) => {
+            if (err) {
+                return next(err)
+            }
+            else {
+            res.status(200).json(response)
+            }
+        }
+    )}; 
 });
 
 // TO USE INTO DBEAVER
