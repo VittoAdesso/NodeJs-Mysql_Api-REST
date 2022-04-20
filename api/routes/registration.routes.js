@@ -90,11 +90,24 @@ router.post("/registration/createMany", (req, res, next) => {
 
 router.route("/registration").get((req, res, next) => {
 //REMEMBER TO CALL THE CONNECTION
+const happySwimmers = [
+    [ "silb", "mixing500", 0],
+    [ "fire", "mixing500", 0],
+    [ "juanV", "mixing500", 0],
+    [ "marCast", "mixing500", 0],
+    [ "vitAd", "mixing500", 0],
+    [ "daBal", "mixing500", 0],
+    [ "anBri", "mixing500", 0],
+    // You can try comment one 
+    [ "alG", "mixing500", 0],
+];
 
 // possibility put check()
 // first query
-    if ( a ) {
-    connectDb.query("INSERT INTO registrations (swimmerId, competitioId, whatPosition) VALUES( , , ),( , , )",(err, response) => {
+    if ( happySwimmers.length < 8 ) { 
+        res.status(500).send({msg: "We can't register, The competition has minimun 8 swimmers"})
+    } else {
+    connectDb.query("INSERT INTO registrations (swimmerId, competitioId, whatPosition) VALUES ? ", [happySwimmers], (err, response) => {
         if (err) {
             return next(err)
         }
@@ -123,6 +136,8 @@ router.route("/registration").get((req, res, next) => {
             }
         }
     )}; 
+
+    
 });
 
 // TO USE INTO DBEAVER
