@@ -9,6 +9,7 @@ Used:
 `` npm install --save mysql `` 
 
 To start Api: 
+
 ``  npm run start ``  
 
 Let’s start off by installing a the nodemon package. This is a tool that automatically restarts a Node application when file changes in a directory are detected:
