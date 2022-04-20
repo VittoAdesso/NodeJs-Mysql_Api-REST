@@ -87,27 +87,30 @@ router.post("/registration/createMany", (req, res, next) => {
 
 // PTO 7 por partes
 // (remember have to put check and express validator + check install )
+// post to create & put to uodate 
+router.route("/registration/bigQuery").post((req, res, next) => {
 
-router.route("/registration").get((req, res, next) => {
-//REMEMBER TO CALL THE CONNECTION
 const happySwimmers = [
-    [ "silb", "mixing500", 0],
-    [ "fire", "mixing500", 0],
-    [ "juanV", "mixing500", 0],
-    [ "marCast", "mixing500", 0],
-    [ "vitAd", "mixing500", 0],
-    [ "daBal", "mixing500", 0],
-    [ "anBri", "mixing500", 0],
+    [ "silb", "arrow50", 2],
+    [ "fire", "arrow50", 1],
+    [ "juanV", "arrow50", 7],
+    [ "marCast", "arrow50", 3],
+    [ "vitAd", "arrow50", 4],
+    [ "daBal", "arrow50", 5],
+    [ "anBri", "arrow50", 6],
     // You can try comment one 
-    [ "alG", "mixing500", 0],
+    [ "alG", "arrow50", 8],
 ];
 
+// const nameCompetition = 'arrow150'; 
 // possibility put check()
 // first query
     if ( happySwimmers.length < 8 ) { 
-        res.status(500).send({msg: "We can't register, The competition has minimun 8 swimmers"})
+        res.status(500).send({
+            msg: "We can't register, The competition has minimun 8 swimmers"
+        })
     } else {
-    connectDb.query("INSERT INTO registrations (swimmerId, competitioId, whatPosition) VALUES ? ", [happySwimmers], (err, response) => {
+    connectDb.query("INSERT INTO registrations (swimmerId, competitionId, whatPosition) VALUES ? ", [happySwimmers], (err, response) => {
         if (err) {
             return next(err)
         }
@@ -115,32 +118,33 @@ const happySwimmers = [
         res.status(200).json(response)
         }
     }
-    )};   
-    if ( b ) {
-        connectDb.query("SELECT * FROM registrations WHERE competitionId = 'shark' ORDER BY competitionId ASC LIMIT 5",(err, response) => {
-            if (err) {
-                return next(err)
-            }
-            else {
-            res.status(200).json(response)
-            }
-        }
-    )};   
-    if ( c ) {
-        connectDb.query("UPDATE competition SET isCelebrate = 1 WHERE competitionId = 'shak'",(err, response) => {
-            if (err) {
-                return next(err)
-            }
-            else {
-            res.status(200).json(response)
-            }
-        }
-    )}; 
+    )};  
+    // else if 
 
-    
+    // have to create a new endpoint???? or secuenzial???
+    if ( happySwimmers.length > 8 ) {
+        connectDb.query("SELECT * FROM registrations WHERE competitionId ? ORDER BY competitionId ASC LIMIT 5",[nameCompetition],(err, response) => {
+            if (err) {
+                return next(err)
+            }
+            else {
+            res.status(200).json(response)
+            }
+        }
+    )};   
+    // if ( response ) {
+    //     connectDb.query("UPDATE competition SET isCelebrate = 1 WHERE competitionId ?",[nameCompetition],(err, response) => {
+    //         if (err) {
+    //             return next(err)
+    //         }
+    //         else {
+    //         res.status(200).json(response)
+    //         }
+    //     }
+    // )}; 
 });
 
-// TO USE INTO DBEAVER
+// TO USE INTO DBEAVER === REMEMBER USE ONE QUERY AT TIME.... YOU CANT USE BIG QUERY WITH INSET UPDATE ETC 
 // added querys to celebrate new competition... simple querys ... i have to controll it now
 // querys to use into dbeaver and show tables 
 // to celebrate & create incription of 8 people
