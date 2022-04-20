@@ -58,56 +58,31 @@ router.post("/registration/createMany", (req, res, next) => {
 // MAKE ANY OBJETS THAT I WANT TO CREATE
 //have to manage only 20 insc and minimun 8 // pto 6
     const manyInscriptions = [
-        [
-            "silb",
-            "croll50",
-            0 
-        ],
-        [
-            "fire",
-            "croll50",
-            0 
-        ],
-        [
-            "juanV",
-            "croll50",
-            0 
-        ],
-        [
-            "marCast",
-            "croll50",
-            0 
-        ],
-        [
-            "vitAd",
-            "croll50",
-            0 
-        ],
-        [
-            "daBal",
-            "croll50",
-            0 
-        ],
-        [
-            "anBri",
-            "croll50",
-            0 
-        ],
-        [
-            "alG",
-            "croll50",
-            0 
-        ]
+        [ "silb", "pecho200", 0],
+        [ "fire", "pecho200", 0],
+        [ "juanV", "pecho200", 0],
+        [ "marCast", "pecho200", 0],
+        [ "vitAd", "pecho200", 0],
+        [ "daBal", "pecho200", 0],
+        [ "anBri", "pecho200", 0],
+        // You can try comment one 
+        [ "alG", "pecho200", 0],
     ];
+
+    if ( manyInscriptions.length < 8 ) {
+        res.status(500).send({msg: "We can't register, The competition has minimun 8 swimmers"})
+        // return next(error)return next(error)
+    }else {
     // HERE IS THE MAGIC
-    connectDb.query("INSERT INTO registrations(swimmerId,competitionId,whatPosition) VALUES ?", [manyInscriptions], (error, result) => {
-        if (error) {
-            res.status(500).send({msg: "We can't register"})
-            return next(error)
-        } else {
-            res.status(200).send({msg: "Registry is complete"})
-        }
-    })
+        connectDb.query("INSERT INTO registrations(swimmerId,competitionId,whatPosition) VALUES ?", [manyInscriptions], (error, result) => {
+            if (error) {
+                res.status(500).send({msg: "We can't register"})
+                return next(error)
+            } else {
+                res.status(200).send({msg: "Registry is complete"})
+            }
+        })
+    };
 });
 
 // PTO 7 por partes
