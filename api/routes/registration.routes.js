@@ -5,7 +5,7 @@ const router = express.Router();
 //thinking to use express validator and check
 
 //GET ALL registrations // 
-router.route("/registration").get((req, res, next) => {
+router.route("/registration").get((res, next) => {
 // all the querys i have to almacenar into const
     const sqlQuery = "SELECT * FROM registrations"
     //REMEMBER TO CALL THE CONNECTION
@@ -54,7 +54,7 @@ router.post("/registration/createOne", (req, res, next) => {
 });
 
 // create MANY registry of competition
-router.post("/registration/createMany", (req, res, next) => {
+router.post("/registration/createMany", (res, next) => {
 // MAKE ANY OBJETS THAT I WANT TO CREATE
 //have to manage only 20 insc and minimun 8 // pto 6
     const manyInscriptions = [
@@ -88,7 +88,7 @@ router.post("/registration/createMany", (req, res, next) => {
 // PTO 7 por partes
 // (remember have to put check and express validator + check install )
 // post to create & put to uodate 
-router.route("/registration/bigQuery").post((req, res, next) => {
+router.route("/registration/bigQuery").post((res, next) => {
 
 const happySwimmers = [
     [ "silb", "arrow50", 2],
@@ -133,7 +133,7 @@ const happySwimmers = [
         }
     )};   
     // if ( response ) {
-    //     connectDb.query("UPDATE competition SET isCelebrate = 1 WHERE competitionId ?",[nameCompetition],(err, response) => {
+    //     connectDb.query("UPDATE competition SET isCelebrate = 1 WHERE competitionId = ?",[nameCompetition],(err, response) => {
     //         if (err) {
     //             return next(err)
     //         }

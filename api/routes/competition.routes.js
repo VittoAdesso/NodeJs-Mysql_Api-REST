@@ -2,9 +2,9 @@ const express = require("express")
 const { connectDb } = require("../database/config");
 const router = express.Router(); 
 
-
+// in some params i delete req, because i dont use it 
 //GET ALL competitions // 
-router.route("/competition").get((req, res, next) => {
+router.route("/competition").get(( res, next) => {
 // all the querys i have to almacenar into const
     const sqlQuery = "SELECT * FROM competitions"
     //REMEMBER TO CALL THE CONNECTION
@@ -53,7 +53,7 @@ router.post("/competition/create", (req, res, next) => {
 
 // get list of one competition with sign swimmers and points 
 // pto 8
-router.route("/competition-competitionSelectManually").get((req, res, next) => {
+router.route("/competition-competitionSelectManually").get((res, next) => {
     // check how improve this part 
     // const {nameCompetition} = 'tets';
 
