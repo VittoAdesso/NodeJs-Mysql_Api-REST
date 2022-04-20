@@ -1,4 +1,4 @@
-# I'm going to build an Api-Rest with NodeJs & Mysql, but i am going to use traditional QUERYS to get data from endpoint not using ORM!!!
+# I built an Api-Rest with NodeJs & Mysql, but i am going to use traditional QUERYS to get data from endpoint not using ORM!!!
 
 🚧🚧🚧🏗️🏗️🏗️🚧🚧🚧
 
