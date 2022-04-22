@@ -4,7 +4,7 @@ const router = express.Router();
 
 // in some params i delete req, because i dont use it 
 //GET ALL competitions // 
-router.route("/competition").get(( res, next) => {
+router.route("/competition").get((req, res, next) => {
 // all the querys i have to almacenar into const
     const sqlQuery = "SELECT * FROM competitions"
     //REMEMBER TO CALL THE CONNECTION
@@ -57,7 +57,7 @@ router.route("/competition-competitionSelectManually").get((res, next) => {
     // check how improve this part 
     // const {nameCompetition} = 'tets';
 
-    const sqlQuery = "SELECT competitions.competitionId, competitions.isCelebrate, registrations. swimmerId FROM competitions INNER JOIN registrations ON competitions.competitionId = registrations.competitionId WHERE competitions.competitionId = 'shark'";
+    const sqlQuery = "SELECT competitions.competitionId, competitions.isCelebrate, registrations.swimmerId FROM competitions INNER JOIN registrations ON competitions.competitionId = registrations.competitionId WHERE competitions.competitionId = 'shark'";
 
     // the query bellow i can use into dbeaver to show tables not here
     // const sqlQuery = "SELECT competitions.competitionId AS competicion, competitions.isCelbrate AS celebrated, registrations. swimmerId AS swimmer FROM competitions INNER JOIN registrations ON competitions.competitionId = registrations.competitionId WHERE competitions.competitionId = 'tets' "

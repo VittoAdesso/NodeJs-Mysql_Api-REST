@@ -7,15 +7,36 @@ router.route("/swimmer").get((req, res, next) => {
 // all the querys i have to almacenar into const
     const sqlQuery = "SELECT * FROM swimmers"
     //REMEMBER TO CALL THE CONNECTION
-    connectDb.query(sqlQuery, (err, response) => {
+    connectDb.query(sqlQuery, (err, swimmers) => {
         if (err) {
             return next(err)
         }
         else {
-            res.status(200).json(response)
+
+            let hombre = 0;
+            let mujer = 0;
+
+            for (let i = 0 ; i < swimmers.length; i++) {
+                
+                let swimmer = swimmers[i]; 
+                console.log(swimmers[i]);
+                if ( swimmer.sex === "Hombre"  ){
+
+                hombre =  hombre + 1 ; 
+                    
+                } else if ( swimmer.sex === "Mujer" ){
+                    mujer = mujer + 1 ; 
+                }
+            };
+
+            console.log("Número de hombres", hombre)
+            console.log("Número de mujeres", mujer)
+            res.status(200).json(swimmers)
         }
     })
 })
+
+
 
 //GET SINGLE swimmer BY ID with params !!!  // 
 
@@ -38,8 +59,7 @@ router.post("/swimmer/create", (req, res, next) => {
         swimmerId: req.body.swimmerId,
         name: req.body.name,
         sex: req.body.sex, 
-        createdAt: req.body.createdAt, 
-        updatedAt: req.body.updatedAt
+        
     }
     connectDb.query("INSERT INTO swimmers SET ?", [inputData], (error, result) => {
         if (error) {

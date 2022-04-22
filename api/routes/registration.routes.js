@@ -70,7 +70,7 @@ router.post("/registration/createMany", (res, next) => {
     ];
 
     if ( manyInscriptions.length < 8 ) {
-        res.status(500).send({msg: "We can't register, The competition has minimun 8 swimmers"})
+        res.status(400).send({msg: "We can't register, The competition has minimun 8 swimmers"})
         // return next(error)return next(error)
     }else {
     // HERE IS THE MAGIC
@@ -88,7 +88,7 @@ router.post("/registration/createMany", (res, next) => {
 // PTO 7 por partes
 // (remember have to put check and express validator + check install )
 // post to create & put to uodate 
-router.route("/registration/bigQuery").post((res, next) => {
+router.route("/registration/bigQuery").post((req, res, next) => {
 
 const happySwimmers = [
     [ "silb", "arrow50", 2],
@@ -132,16 +132,16 @@ const happySwimmers = [
             }
         }
     )};   
-    // if ( response ) {
-    //     connectDb.query("UPDATE competition SET isCelebrate = 1 WHERE competitionId = ?",[nameCompetition],(err, response) => {
-    //         if (err) {
-    //             return next(err)
-    //         }
-    //         else {
-    //         res.status(200).json(response)
-    //         }
-    //     }
-    // )}; 
+    if ( response ) {
+        connectDb.query("UPDATE competition SET isCelebrate = 1 WHERE competitionId = ?",[nameCompetition],(err, response) => {
+            if (err) {
+                return next(err)
+            }
+            else {
+            res.status(200).json(response)
+            }
+        }
+    )}; 
 });
 
 // TO USE INTO DBEAVER === REMEMBER USE ONE QUERY AT TIME.... YOU CANT USE BIG QUERY WITH INSET UPDATE ETC 
