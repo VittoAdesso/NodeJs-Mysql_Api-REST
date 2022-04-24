@@ -5,7 +5,7 @@ const router = express.Router();
 //thinking to use express validator and check
 
 //GET ALL registrations // 
-router.route("/registration").get((res, next) => {
+router.route("/registration").get((req, res, next) => {
 // all the querys i have to almacenar into const
     const sqlQuery = "SELECT * FROM registrations"
     //REMEMBER TO CALL THE CONNECTION
@@ -54,7 +54,7 @@ router.post("/registration/createOne", (req, res, next) => {
 });
 
 // create MANY registry of competition
-router.post("/registration/createMany", (res, next) => {
+router.post("/registration/createMany", (req, res, next) => {
 // MAKE ANY OBJETS THAT I WANT TO CREATE
 //have to manage only 20 insc and minimun 8 // pto 6
     const manyInscriptions = [

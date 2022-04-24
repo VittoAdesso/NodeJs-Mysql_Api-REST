@@ -53,7 +53,7 @@ router.post("/competition/create", (req, res, next) => {
 
 // get list of one competition with sign swimmers and points 
 // pto 8
-router.route("/competition-competitionSelectManually").get((res, next) => {
+router.route("/competition-competitionSelectManually").get((req, res, next) => {
     // check how improve this part 
     // const {nameCompetition} = 'tets';
 
